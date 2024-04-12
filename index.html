@@ -62,17 +62,27 @@
             
     const form = document.getElementById("newform");
    let display=form.elements["display"]
-   try{
-        display.value=eval(display.value)
-        console.log(display.value)
-   }catch(EXception){
-    display.value="invalid inputs"
-        
+
+
+   if(display.value.trim()=== ""){
+    display.value="Enter digits"
     setTimeout(()=>{
-        display.value=" "
+        display.value=" ";
+    },2000)
+    return
+   }
+
+   try{
+  const result=eval(display.value)
+  display.value=result;
+   }catch(error){
+   display.value = "invalid input"
+     setTimeout(()=>{
+        display.value=" ";
     },2000)
    }
-        }
+
+       }
     </script>
 </body>
 </html>
